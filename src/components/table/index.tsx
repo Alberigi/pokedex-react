@@ -1,18 +1,11 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Table } from "react-bootstrap";
 import { TableItem } from "../tableItem/tableItem";
 import { httpClientService } from "../../services/config/provider";
+import { PokemonContext } from "../../contexts/pokemon.context";
 
 export const TablePokemons = () => {
-  const [pokemons, setPokemons] = useState([]);
-  useEffect(() => {
-    getPokemons();
-  }, []);
-
-  async function getPokemons() {
-    const result = await httpClientService.get("/getPokemons");
-    setPokemons(result);
-  }
+  const { pokemons } = useContext(PokemonContext);
 
   return (
     <Table striped bordered hover>
@@ -26,7 +19,7 @@ export const TablePokemons = () => {
       </thead>
       <tbody>
         {pokemons.map((pokemon, index) => (
-          <TableItem pokemon={pokemon} index={index + 1} />
+          <TableItem pokemon={pokemon} key={index} index={index + 1} />
         ))}
       </tbody>
     </Table>

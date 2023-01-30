@@ -1,11 +1,12 @@
-import { Home } from "./views/Home"
-import 'bootstrap/dist/css/bootstrap.min.css';
+import "bootstrap/dist/css/bootstrap.min.css";
+import { Outlet } from "react-router-dom";
+import { SideBar } from "./components/sideBar";
 
 export const App = () => {
-
   return (
     <div className="App">
-      <Home/>
+      <SideBar />
+      <Outlet />
     </div>
-  )
-}
+  );
+};
