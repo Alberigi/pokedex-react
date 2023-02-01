@@ -1,7 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { Table } from "react-bootstrap";
-import { TableItem } from "../tableItem/tableItem";
-import { httpClientService } from "../../services/config/provider";
+import { TableItem } from "./tableItem";
 import { PokemonContext } from "../../contexts/pokemon.context";
 
 export const TablePokemons = () => {
