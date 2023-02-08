@@ -1,5 +1,3 @@
-export interface CreatePokemonFormDTO {
-    name: string;
-    type: string;
-    image: string;
-}
+import { IPokemon } from "../interfaces";
+
+export interface CreatePokemonFormDTO extends Omit<IPokemon,'id'>{}

@@ -10,15 +10,15 @@ export const TablePokemons = () => {
     <Table striped bordered hover>
       <thead>
         <tr>
-          <th>#</th>
+          <th>Thumb</th>
           <th>Name</th>
           <th>Type</th>
-          <th>Image</th>
+          <th>Actions</th>
         </tr>
       </thead>
       <tbody>
         {pokemons.map((pokemon, index) => (
-          <TableItem pokemon={pokemon} key={index} index={index + 1} />
+          <TableItem pokemon={pokemon} key={index} />
         ))}
       </tbody>
     </Table>

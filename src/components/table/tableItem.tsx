@@ -1,12 +1,32 @@
-export const TableItem = ({ pokemon, index }) => {
+import { useState } from "react";
+import { ModalConfirmDelete } from "../modalConfirmDelete";
+import { EditRow } from "./editRow";
+import { ReadRow } from "./readRow";
+
+export const TableItem = ({ pokemon }) => {
+  const [showModal, setShowModal] = useState(false);
+  const [editMode, setEditMode] = useState(false);
+
+  function renderRow(): JSX.Element {
+    return editMode ? (
+      <EditRow pokemon={pokemon} setEditMode={setEditMode} />
+    ) : (
+      <ReadRow
+        pokemon={pokemon}
+        setEditMode={setEditMode}
+        setShowModal={setShowModal}
+      />
+    );
+  }
+
   return (
-    <tr>
-      <td>{index}</td>
-      <td>{pokemon.name}</td>
-      <td>{pokemon.type}</td>
-      <td>
-        <img src={pokemon.image}></img>
-      </td>
-    </tr>
+    <>
+      <ModalConfirmDelete
+        setShowModal={setShowModal}
+        showModal={showModal}
+        pokemonName={pokemon.name}
+      />
+      {renderRow()}
+    </>
   );
 };

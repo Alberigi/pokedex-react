@@ -1,11 +1,14 @@
-export class HttpClientService {
-    private clientHttp: any;
+import { AxiosInstance } from "axios";
+import { IHttpClientService } from "../../domains/interfaces";
 
-    constructor(clientHttp: any) {
+export class HttpClientService implements IHttpClientService{
+    private clientHttp: AxiosInstance;
+
+    constructor(clientHttp: AxiosInstance) {
         this.clientHttp = clientHttp;
     }
 
-    async post(route, data) {
+    async post(route: string, data: any): Promise<any> {
         try {
             const result = await this.clientHttp.post(route, data);
             return result.data;
@@ -14,7 +17,7 @@ export class HttpClientService {
         }
     }
 
-    async get(route, params) {
+    async get(route:string, params?: any): Promise<any> {
         try {
             const result = await this.clientHttp.get(route, params);
             return result.data;
